@@ -1,0 +1,78 @@
+TEMA2 - Simulator de Octave
+Marinescu Maria-Catalina, 324CA
+
+-------------------------------------------------------------------------------
+
+In the making of the homework I decided to organize it in functions for each 
+command.
+
+**In main** : I declared every variable that I needed, the three main variables
+beeing: v(the array that stores the matrices), lines(the array that stores the
+lines) and col(the array that stores the columns). In a "do while" loop I
+used switch case for every letter that represented a command and for each one 
+of them I called the specific function and where needed I reallocated memory
+v, lines and col. I also considered the case where the command is a letter that
+doesn't represent a command.  
+
+**realloc_arr** : function that reallocates memory for the three main arrays
+(v, lines, col);
+
+**alloc_matrix** : function that allocates memory to a matrix;
+
+**read_matrix** : function that reads a matrix given from input;
+
+**multiply** : function multiplies two matrices and updates the aux with the
+result so on the next call it will multiply by the result.
+
+**for L** : I called the realloc_arr function (so that every time a matrix is 
+given from input there is enough space for it), the alloc_matrix function and 
+the read_matrix function. I stored its dimensions in the specific arrays and I 
+increased the total number of matrices.
+
+**for D** : I printed the specified dimensions that are stored in the lines and 
+col arrays at the position given by the index.
+
+**for P** : I printed the matrix at the given index using the print_matrix 
+function;
+
+**for C** : I read the two arrays that represented the lines and columns indices
+and I allocated memory for both of them. After that, I allocated memory for the 
+new resized matrix and I created it using the specified lines and columns. I 
+freed the initial matrix and I updated the three arrays with the new matrix and 
+its dimensions and in the end I freed the arrays that represented the lines and 
+columns indices.
+
+**for M** : I called the mult function that does the multiplication of two 
+matrices. I allocated memory for the result of the multiplication and with three
+for loops I did the algorithm (each element is the sum of the product between 
+the lines of the first matrix and columns of the second one). I reallocated 
+memory for every array, I added the resulted matrix at the end of the v array, 
+I updated the lines and col arrays and I increased the total number of matrices. 
+
+**for O** : I called the sort_matrix function, where I created an array that 
+stores the sum of the elements of each matrix from the v array. After that I 
+sorted the v, lines and col arrays from the lowest to the highest sum using a 
+bubble sort.
+
+**for T** : I called the transpose_matrix function, where I
+created the transpose matrix by switching the lines and columns of the original
+one.
+
+**for R** : I called the rise function, where I created a matrix(aux) that has 1
+on the main diagonal and 0 elsewhere. I stored the original matrix in another 
+variable and in a while loop I checked if the power is odd or even : if it is
+odd I called the multiply_function with result copy and aux so the original 
+matrix will be multiplied by the aux and I decreased the power; if it is even I 
+called the multiply function with tmp and copy so the original matrix will be 
+multiplied by itself and I divided the power by 2. In the end I updated the v 
+array.
+
+**for F** : I called the free_matrix function, where I freed the memory for the 
+matrix at the given index and I moved every matrix one position to the left as 
+well as the dimensions.
+
+**for Q** : I called the matrix_release function, where I freed all the matrices
+from the v array as well as the lines and col arrays.
+
+For every command I also printed the specified errors.
+
